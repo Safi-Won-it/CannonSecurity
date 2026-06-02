@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cannon Security and Patrol Services</title>
+    <style>
+        /* Core Color Palette & Variables */
+        :root {
+            --brand-red: #D3212D; /* Inspired by the logo's strong red */
+            --brand-dark-red: #A61720;
+            --brand-black: #1A1A1A;
+            --brand-dark-grey: #333333;
+            --brand-light-grey: #F8F9FA;
+            --brand-white: #FFFFFF;
+            --text-main: #4A4A4A;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--brand-white);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--brand-black);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--brand-white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-top: 4px solid var(--brand-red);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .brand-container img {
+            height: 70px;
+            width: auto;
+        }
+
+        .brand-text h1 {
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--brand-black);
+        }
+
+        .brand-text span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--brand-red);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--brand-dark-grey);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--brand-red);
+        }
+
+        .nav-phone {
+            background-color: var(--brand-red);
+            color: var(--brand-white);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-phone:hover {
+            background-color: var(--brand-dark-red);
+            color: var(--brand-white);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(to right, rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.6)), url('image_3cf6c7.jpg') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            color: var(--brand-white);
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            color: var(--brand-white);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero h2 span {
+            color: var(--brand-red);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        .btn-primary {
+            background-color: var(--brand-red);
+            color: var(--brand-white);
+            padding: 15px 35px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--brand-dark-red);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(211, 33, 45, 0.3);
+        }
+
+        /* Sections General */
+        .section {
+            padding: 80px 5%;
+        }
+
+        .bg-light {
+            background-color: var(--brand-light-grey);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--brand-red);
+        }
+
+        /* About Grid */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-bottom: 6px solid var(--brand-red);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--brand-white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-top-color: var(--brand-red);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--brand-black);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--brand-black);
+            color: var(--brand-white);
+            padding: 60px 5% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--brand-white);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col h3 span {
+            color: var(--brand-red);
+        }
+
+        .footer-col p {
+            color: #AAAAAA;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .footer-col strong {
+            color: var(--brand-white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            nav ul {
+                display: none; /* In a real project, replace with a hamburger menu */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand-container">
+            <img src="image_3cf6a7.png" alt="Cannon Security Logo">
+            <div class="brand-text">
+                <h1>Cannon Security</h1>
+                <span>And Patrol Services</span>
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#standards">Training & Standards</a></li>
+                <li><a href="tel:4168919567" class="nav-phone">Call: 416-891-9567</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Building <span>Trust</span> Is Our Top Priority</h2>
+            <p>Since 2000, we have delivered elite uniformed guard and mobile patrol solutions to public and private sector clients throughout Ontario.</p>
+            <a href="#contact" class="btn-primary">Request a Consultation</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="section-header" style="text-align: left;">
+                    <h2>Who We Are</h2>
+                </div>
+                <p>Founded by Raven Ramnarine, Cannon Security and Patrol Services operates on a core management principle: fostering close, flexible, and responsive working relationships with every client we serve. We look carefully at your unique needs to provide security solutions that are both highly effective and cost-efficient.</p>
+                <p>As a proudly <strong>ISO 9001:2015 registered company</strong>, our dedication to integrity, service, and professionalism is backed by rigorous international standards. In 2021 alone, our dedicated team of 86 field and management staff successfully conducted over 50,000 hours of permanent security coverage across the province.</p>
+            </div>
+            <div class="about-image">
+                <img src="image_3d4c9a.jpg" alt="Mr. Raven M. Ramnarine, C.E.O.">
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section bg-light">
+        <div class="section-header">
+            <h2>Comprehensive Protection</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Uniformed Guards & Patrols</h3>
+                <p>Highly trained, professional guards designed to secure office complexes, hospitals, residential condominiums, construction sites, and industrial facilities.</p>
+            </div>
+            <div class="service-card">
+                <h3>Advanced Access Control</h3>
+                <p>Rigorous perimeter security, featuring meticulous visitor screening protocols and precise vehicle gate control management.</p>
+            </div>
+            <div class="service-card">
+                <h3>Emergency & Incident Response</h3>
+                <p>Expert personnel equipped to manage natural disasters, fire prevention, and immediate response to security breaches.</p>
+            </div>
+            <div class="service-card">
+                <h3>Health & Safety Integration</h3>
+                <p>Ensuring site safety with staff fully certified in First Aid, C.P.R., and A.E.D. operation, alongside personal injury prevention strategies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="standards" class="section">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="image_3cf6c3.jpg" alt="Cannon Security Training and Team">
+            </div>
+            <div class="about-text">
+                <div class="section-header" style="text-align: left;">
+                    <h2>Elite Training Standards</h2>
+                </div>
+                <p>A security firm is only as strong as its personnel. At Cannon Security, all applicants must pass a demanding selection process, including achieving a minimum of 80% on written exams and a favorable review on operational deportment before joining our team.</p>
+                <p>Our comprehensive training programs include:</p>
+                <ul style="list-style: none; margin-top: 15px; line-height: 2;">
+                    <li><strong style="color: var(--brand-red);">✓</strong> Certified Protection Officer (CPO) Designations</li>
+                    <li><strong style="color: var(--brand-red);">✓</strong> Legal Aspects, Limits of Authority & Use of Force</li>
+                    <li><strong style="color: var(--brand-red);">✓</strong> Advanced Report Writing and Patrol Procedures</li>
+                    <li><strong style="color: var(--brand-red);">✓</strong> Communication, Public Relations & Professional Dress</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Cannon <span>Security</span></h3>
+                <p>We believe that our clients must deal directly with the people in our organization who make the decisions, eliminating the "call us when you have a problem" approach to management.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Get In <span>Touch</span></h3>
+                <p><strong>Contact:</strong> Raven M. Ramnarine, C.E.O.</p>
+                <p><strong>Direct Cell:</strong> 416-891-9567</p>
+                <p><strong>Corporate Office:</strong> 416-742-9994</p>
+                <p><strong>Email:</strong> ravenr@cannonsecurity.ca</p>
+            </div>
+            <div class="footer-col">
+                <h3>Our <span>Locations</span></h3>
+                <p><strong>Head Office:</strong><br>2217 Danforth Ave<br>Toronto, Ontario, M4C 1K4</p>
+                <br>
+                <p><strong>Branch Office:</strong><br>8 Main St. East, Suite 306<br>Hamilton, ON L8N 1E8</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Cannon Security and Patrol Services. ISO 9001: 2015 Registered. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
