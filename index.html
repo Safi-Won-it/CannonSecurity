@@ -80,7 +80,6 @@
             height: 60px;
             width: auto;
             animation: float 6s ease-in-out infinite;
-            /* Fallback style if logo is missing */
             background-color: transparent;
             min-width: 60px; 
         }
@@ -152,7 +151,6 @@
         /* Hero Section */
         .hero {
             position: relative;
-            /* Added solid fallback color just in case image is missing */
             background-color: var(--brand-black); 
             background-image: linear-gradient(to right, rgba(26, 26, 26, 0.92), rgba(26, 26, 26, 0.5)), url('image_3cf6c7.jpg');
             background-position: center center;
@@ -265,12 +263,17 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             border-bottom: 8px solid var(--brand-red);
             transition: transform 0.4s ease;
-            background-color: var(--brand-light-grey); /* Fallback */
+            background-color: var(--brand-light-grey);
             min-height: 200px;
         }
 
         .about-image img:hover {
             transform: translateY(-10px);
+        }
+
+        /* Alternate Image Style for Fleet */
+        .img-border-dark {
+            border-bottom: 8px solid var(--brand-black) !important;
         }
 
         /* Floating Image Modifier */
@@ -439,7 +442,8 @@
             <ul>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Our Services</a></li>
-                <li><a href="#standards">Training & Standards</a></li>
+                <li><a href="#fleet">Mobile Fleet</a></li>
+                <li><a href="#standards">Training</a></li>
                 <li><a href="tel:4168919567" class="nav-phone">Call: 416-891-9567</a></li>
             </ul>
         </nav>
@@ -453,6 +457,7 @@
         </div>
     </section>
 
+    <!-- About Section (Text Left, Image Right) -->
     <section id="about" class="section">
         <div class="about-grid">
             <div class="about-text">
@@ -468,6 +473,7 @@
         </div>
     </section>
 
+    <!-- Services Section -->
     <section id="services" class="section bg-light">
         <div class="section-header">
             <h2>Comprehensive Protection</h2>
@@ -492,11 +498,25 @@
         </div>
     </section>
 
-    <section id="standards" class="section">
+    <!-- NEW Mobile Fleet Section (Image Left, Text Right) -->
+    <section id="fleet" class="section">
         <div class="about-grid">
             <div class="about-image">
-                <img src="image_3cf6c3.jpg" alt="Cannon Security Training and Team">
+                <img src="Screenshot 2026-06-02 142659.jpg" alt="Cannon Security Mobile Patrol Vehicle" class="img-border-dark">
             </div>
+            <div class="about-text">
+                <div class="section-header" style="text-align: left;">
+                    <h2>Mobile Patrol Fleet</h2>
+                </div>
+                <p>Our fully equipped mobile patrol fleet guarantees rapid response and continuous perimeter security for your property. By deploying highly visible, marked vehicles, we provide a strong deterrent against unauthorized activity and property breaches.</p>
+                <p>Whether monitoring sprawling commercial lots, industrial complexes, or residential communities, our mobile units conduct randomized and scheduled sweeps 24/7 to ensure the complete integrity of your site.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Standards Section (Image Right, Text Left) -->
+    <section id="standards" class="section bg-light">
+        <div class="about-grid">
             <div class="about-text">
                 <div class="section-header" style="text-align: left;">
                     <h2>Elite Training Standards</h2>
@@ -510,9 +530,13 @@
                     <li><strong style="color: var(--brand-red); font-size: 1.2rem; margin-right: 10px;">✓</strong> Communication, Public Relations & Professional Dress</li>
                 </ul>
             </div>
+            <div class="about-image">
+                <img src="image_3cf6c3.jpg" alt="Cannon Security Training and Team">
+            </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer id="contact">
         <div class="footer-grid">
             <div class="footer-col">
